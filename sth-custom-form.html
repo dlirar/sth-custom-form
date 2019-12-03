@@ -1,0 +1,41 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<dom-module id="sth-custom-form">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .pink{
+        background-color: red;
+      }
+    </style>
+    <paper-input type="text" value="Default" label="Etiqueta"></paper-input>
+    <paper-button class="pink">link</paper-button>
+  </template>
+
+  <script>
+    /**
+     * `sth-custom-form`
+     * A polymer element to create custom forms
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SthCustomForm extends Polymer.Element {
+      static get is() { return 'sth-custom-form'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'sth-custom-form'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SthCustomForm.is, SthCustomForm);
+  </script>
+</dom-module>
