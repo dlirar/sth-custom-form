@@ -16,8 +16,9 @@
       <template is="dom-repeat" id="form-inputs" items="[[fields]]" as="fields">
         <paper-input type="[[fields.type]]" value="[[fields.value]]" label="[[fields.label]]"></paper-input>
       </template>
+      
         <template is="dom-repeat" id="form-actions" items="[[actions]]" as="actions">
-          <button class="[[actions.class]]" onclick="__resetForm()">[[actions.label]]</button>
+          <paper-button class="[[actions.class]]" on-click="[[actions.action]]">[[actions.label]]</paper-button>
         </template>
     </form>
   
@@ -46,17 +47,12 @@
             }
           },
           actions:{
-            type: Array,
-            value(){
-              return[
-                {"class":"red", "label":"Reset form"}
-              ]
-            }
+            type: Array
           },
-          __resetForm(){
-            document.getElementById("form").reset();
-          }
         };
+      }
+      test(){
+        console.log("here");
       }
     }
 
