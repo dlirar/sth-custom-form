@@ -7,12 +7,20 @@
       :host {
         display: block;
       }
-      .pink{
-        background-color: red;
+      .red{
+        background-color: pink;
       }
     </style>
-    <paper-input type="text" value="Default" label="Etiqueta"></paper-input>
-    <paper-button class="pink">link</paper-button>
+
+    <form method="#" action="#" id="Form">
+      <template is="dom-repeat" id="form-inputs" items="[[fields]]" as="fields">
+        <paper-input type="[[fields.type]]" value="[[fields.value]]" label="[[fields.label]]"></paper-input>
+      </template>
+        <template is="dom-repeat" id="form-actions" items="[[actions]]" as="actions">
+          <button class="[[actions.class]]" onclick="__resetForm()">[[actions.label]]</button>
+        </template>
+    </form>
+  
   </template>
 
   <script>
@@ -28,9 +36,25 @@
       static get is() { return 'sth-custom-form'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'sth-custom-form'
+          fields:{
+            type: Array,
+            value(){
+              return[
+                {"type":"text", "value":"Por defecto", "label":"Usuario"},
+                {"type":"password", "value":"password", "label":"Contraseña"}
+              ]
+            }
+          },
+          actions:{
+            type: Array,
+            value(){
+              return[
+                {"class":"red", "label":"Reset form"}
+              ]
+            }
+          },
+          __resetForm(){
+            document.getElementById("form").reset();
           }
         };
       }
