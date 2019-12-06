@@ -12,13 +12,13 @@
       }
     </style>
 
-    <form method="#" action="#" id="Form">
+    <form>
       <template is="dom-repeat" id="form-inputs" items="[[fields]]" as="fields">
         <paper-input type="[[fields.type]]" value="[[fields.value]]" label="[[fields.label]]"></paper-input>
       </template>
       
         <template is="dom-repeat" id="form-actions" items="[[actions]]" as="actions">
-          <paper-button class="[[actions.class]]" on-click="[[actions.action]]">[[actions.label]]</paper-button>
+          <paper-button class="[[actions.class]]" on-click="__test">[[actions.label]]</paper-button>
         </template>
     </form>
   
@@ -51,8 +51,8 @@
           },
         };
       }
-      test(){
-        console.log("here");
+      __test(e){
+        this.dispatchEvent(new CustomEvent('test', {detail: {kicked: "here"}}));
       }
     }
 
